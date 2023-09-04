@@ -21,8 +21,11 @@ jobs:
       - name: NPM install CI
         run: npm ci
 
+      - id: timestamp
+        run: echo "::set-output name=timestamp::$(date +%d%m%H%M)"
+
       - name: Bygg CodePush
         run: |
           npx appcenter login --token ${{ secrets.APPCENTER_API_TOKEN }}
-          npx appcenter codepush release-react -a leif.erik.bjorkli-BEKK.no/RNSkolenApp -d Staging -t ${{ github.event.inputs.targetVersion }}
-          npx appcenter codepush release-react -a leif.erik.bjorkli-BEKK.no/RNSkolenApp-Android -d Staging -t ${{ github.event.inputs.targetVersion }}
+          npx appcenter codepush release-react -a leif.erik.bjorkli-BEKK.no/RNSkolenApp -d Staging -t ${{ github.event.inputs.targetVersion }} --description "${{ github.event.inputs.targetVersion }}-${{ steps.timestamp.outputs.timestamp }}"
+          npx appcenter codepush release-react -a leif.erik.bjorkli-BEKK.no/RNSkolenApp-Android -d Staging -t ${{ github.event.inputs.targetVersion }} --description "${{ github.event.inputs.targetVersion }}-${{ steps.timestamp.outputs.timestamp }}"
