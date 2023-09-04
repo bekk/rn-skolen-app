@@ -20,10 +20,10 @@ import {
 import {
   Colors,
   DebugInstructions,
-  Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import {useCodePushDescription} from './Utils';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -56,10 +56,11 @@ function Section({children, title}: SectionProps): JSX.Element {
 }
 
 function App(): JSX.Element {
+  const codePushDescription = useCodePushDescription();
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: 'blue',
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
@@ -71,7 +72,16 @@ function App(): JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
+        <View
+          style={{
+            position: 'absolute',
+            top: 5,
+            right: 10,
+            elevation: 1,
+            zIndex: 1,
+          }}>
+          <Text>{codePushDescription}</Text>
+        </View>
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
