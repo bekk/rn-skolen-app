@@ -3,11 +3,15 @@
 
 if [ "$APPCENTER_BRANCH" != "master" ]; then
   if [ -n "$APPCENTER_XCODE_PROJECT" ]; then
-    echo "Setting iOS version to $APPCENTER_BRANCH"
-    plutil -replace CFBundleShortVersionString -string "$APPCENTER_BRANCH" $APPCENTER_SOURCE_DIRECTORY/ios/RNSkolenApp/Info.plist
+    current_version=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$APPCENTER_SOURCE_DIRECTORY/ios/RNSkolenApp/Info.plist")
+    new_version="$current_version-$APPCENTER_BRANCH"
+    echo "Setting iOS version to $new_version"
+    /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $new_version" "$APPCENTER_SOURCE_DIRECTORY/ios/RNSkolenApp/Info.plist"
   fi
   if [ -n "$APPCENTER_ANDROID_VARIANT" ]; then
-    echo "Setting Android version to $APPCENTER_BRANCH"
-    sed -i '' "s/versionName \".*\"/versionName \"$APPCENTER_BRANCH\"/" $APPCENTER_SOURCE_DIRECTORY/android/app/build.gradle
+    current_version=$(grep -o 'versionName "[^"]*"' "$APPCENTER_SOURCE_DIRECTORY/android/app/build.gradle" | cut -d '"' -f 2)
+    new_version="$current_version-$APPCENTER_BRANCH"
+    echo "Setting Android version to $new_version"
+    sed -i '' "s/versionName \"$current_version\"/versionName \"$new_version\"/" "$APPCENTER_SOURCE_DIRECTORY/android/app/build.gradle"
   fi
 fi
