@@ -6,7 +6,7 @@ on:
       targetVersion:
         description: 'Versjonsnavn fra AppCenter, feks: 1.0.0-<branchname>'
         required: true
-        default: '1.0.0-appcenter_script'
+        default: '1.0.0-appcenter-script'
 jobs:
   build_codepush:
     runs-on: macos-13
