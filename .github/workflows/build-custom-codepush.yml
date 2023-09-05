@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       targetVersion:
-        description: 'Target version, feks: 1.0.0-<navn>'
+        description: 'Versjonsnavn fra AppCenter, feks: 1.0.0-<branchname>'
         required: true
-        default: '1.0.0-leiferik'
+        default: '1.0.0-appcenter-script'
 jobs:
   build_codepush:
     runs-on: macos-13
