@@ -1,12 +1,6 @@
 name: Lag CodePush 🚀
 
-on:
-  workflow_dispatch:
-    inputs:
-      targetVersion:
-        description: 'Target version, feks: 1.0.0-<navn>'
-        required: true
-        default: '1.0.0-leiferik'
+on: workflow_dispatch
 jobs:
   build_codepush:
     runs-on: macos-13
@@ -16,7 +10,7 @@ jobs:
           fetch-depth: 1
 
       - run: |
-          echo "Target version: ${{ github.event.inputs.targetVersion }}"
+          echo "Target version: ${{ github.head_ref }}"
 
       - name: NPM install CI
         run: npm ci
@@ -27,5 +21,5 @@ jobs:
       - name: Bygg CodePush
         run: |
           npx appcenter login --token ${{ secrets.APPCENTER_API_TOKEN }}
-          npx appcenter codepush release-react -a leif.erik.bjorkli-BEKK.no/RNSkolenApp -d Staging -t ${{ github.event.inputs.targetVersion }} --description "${{ github.event.inputs.targetVersion }}-${{ steps.timestamp.outputs.timestamp }}"
-          npx appcenter codepush release-react -a leif.erik.bjorkli-BEKK.no/RNSkolenApp-Android -d Staging -t ${{ github.event.inputs.targetVersion }} --description "${{ github.event.inputs.targetVersion }}-${{ steps.timestamp.outputs.timestamp }}"
+          npx appcenter codepush release-react -a leif.erik.bjorkli-BEKK.no/RNSkolenApp -d Staging -t ${{ github.head_ref }} --description "${{ github.head_ref }}-${{ steps.timestamp.outputs.timestamp }}"
+          npx appcenter codepush release-react -a leif.erik.bjorkli-BEKK.no/RNSkolenApp-Android -d Staging -t ${{ github.head_ref }} --description "${{ github.head_ref }}-${{ steps.timestamp.outputs.timestamp }}"
