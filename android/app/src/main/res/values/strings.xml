@@ -2,5 +2,5 @@
     <string name="app_name">RNSkolenApp</string>
     <string name="appCenterCrashes_whenToSendCrashes" moduleConfig="true" translatable="false">DO_NOT_ASK_JAVASCRIPT</string>
     <string name="appCenterAnalytics_whenToEnableAnalytics" moduleConfig="true" translatable="false">ALWAYS_SEND</string>
-    <string moduleConfig="true" name="CodePushDeploymentKey">0yks8DcKVI94TO1NocwDCMsQ_YH02zXuMgZ7h</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">SgzcTWr-bwaxvyrNwsngeJ0ZLPu4h3k6Euy8t</string>
 </resources>
