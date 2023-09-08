@@ -1,19 +1,19 @@
-import {useEffect, useState} from 'react';
-import codePush from 'react-native-code-push';
+import {useEffect, useState} from 'react'
+import codePush from 'react-native-code-push'
 
 export function useCodePushDescription() {
-  const [description, setDescription] = useState<string>('No codepush');
+  const [description, setDescription] = useState<string>('No codepush')
 
   useEffect(() => {
-    setCodePushDescription();
-  }, []);
+    setCodePushDescription()
+  }, [])
 
   async function setCodePushDescription() {
-    const codePushMetadata = await codePush.getUpdateMetadata();
+    const codePushMetadata = await codePush.getUpdateMetadata()
     if (codePushMetadata && codePushMetadata.description) {
-      setDescription(codePushMetadata.description);
+      setDescription(codePushMetadata.description)
     }
   }
 
-  return description;
+  return description
 }
