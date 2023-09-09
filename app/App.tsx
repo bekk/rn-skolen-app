@@ -1,17 +1,54 @@
 import React from 'react'
-import {ScrollView} from 'react-native'
-import {Header} from './components/Header'
-import {InfoContent} from './screens/InfoContent'
-import {CodePushDescription} from 'app/components/CodePushDescription'
+import {InfoScreen} from './screens/info-screen/InfoScreen'
+import {NavigationContainer} from '@react-navigation/native'
+import {
+  BottomTabNavigationOptions,
+  createBottomTabNavigator,
+} from '@react-navigation/bottom-tabs'
+import {ProgramScreen} from 'app/screens/program-screen/ProgramScreen'
+import {InfoIcon} from 'app/icons/InfoIcon'
+import {SafeAreaProvider} from 'react-native-safe-area-context'
+import {InfoIconFilled} from 'app/icons/InfoIconFilled'
+import {ProgramIconFilled} from 'app/icons/ProgramIconFilled'
+import {ProgramIcon} from 'app/icons/ProgramIcon'
+
+const Tab = createBottomTabNavigator()
 
 export function App(): JSX.Element {
   return (
-    <ScrollView
-      style={{flex: 1, backgroundColor: 'rgb(30, 30, 30)'}}
-      contentContainerStyle={{paddingBottom: 40}}>
-      <Header />
-      <CodePushDescription />
-      <InfoContent />
-    </ScrollView>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={getScreenOptions}>
+          <Tab.Screen name="Info" component={InfoScreen} />
+          <Tab.Screen name="Program" component={ProgramScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   )
+}
+
+function getScreenOptions({route}: any): BottomTabNavigationOptions {
+  return {
+    tabBarIcon: ({focused}: {focused: boolean}) => {
+      return getRouteIcon(route.name, focused)
+    },
+    tabBarActiveTintColor: 'black',
+    tabBarInactiveTintColor: 'black',
+    headerShown: false,
+    tabBarStyle: {backgroundColor: 'rgb(221, 255, 87)'},
+  }
+}
+
+function getRouteIcon(routeName: string, focused: boolean) {
+  if (routeName === 'Info') {
+    if (focused) {
+      return <InfoIconFilled size={30} />
+    }
+    return <InfoIcon size={30} />
+  } else if (routeName === 'Program') {
+    if (focused) {
+      return <ProgramIconFilled size={30} />
+    }
+    return <ProgramIcon size={30} />
+  }
 }

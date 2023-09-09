@@ -2,21 +2,18 @@ import React, {useState} from 'react'
 import {
   Animated,
   Easing,
-  Linking,
   Pressable,
-  Text,
+  PressableProps,
   TextStyle,
 } from 'react-native'
 
-type Props = {
-  children: string
-  url: string
+type Props = Omit<PressableProps, 'style'> & {
   style?: TextStyle
 }
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
-export function Link({children, url, style}: Props) {
+export function Button({style, ...rest}: Props) {
   const [opacity] = useState(() => new Animated.Value(1))
   const [pressed, setPressed] = useState(false)
 
@@ -39,10 +36,6 @@ export function Link({children, url, style}: Props) {
     animateTo(1, 200)
   }
 
-  function handlePress() {
-    Linking.openURL(url)
-  }
-
   const activeStyles = pressed ? {opacity} : {}
 
   return (
@@ -50,9 +43,8 @@ export function Link({children, url, style}: Props) {
       accessibilityRole="button"
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
-      onPress={handlePress}
-      style={activeStyles}>
-      <Text style={[{textDecorationLine: 'underline'}, style]}>{children}</Text>
-    </AnimatedPressable>
+      style={[style, activeStyles]}
+      {...rest}
+    />
   )
 }

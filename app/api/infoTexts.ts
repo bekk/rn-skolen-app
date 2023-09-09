@@ -1,4 +1,4 @@
-const texts = {
+const infoTexts = {
   welcomeMessage:
     'Velkommen til fagdag på Det Gamle Biblioteket, 10. mars 2023!',
   practicalInformation:
@@ -49,4 +49,4 @@ const texts = {
   },
 }
 
-export default texts
+export default infoTexts
