@@ -1,6 +1,6 @@
+import App from 'app/App'
 import React from 'react'
 import codePush from 'react-native-code-push'
-import {App} from './App'
 
 function Main() {
   return <App />

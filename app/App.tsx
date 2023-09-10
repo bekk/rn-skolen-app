@@ -1,5 +1,5 @@
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import React from 'react'
+import type {PropsWithChildren} from 'react'
 import {
   SafeAreaView,
   ScrollView,
@@ -8,22 +8,22 @@ import {
   Text,
   useColorScheme,
   View,
-} from 'react-native';
+} from 'react-native'
 
 import {
   Colors,
   DebugInstructions,
   LearnMoreLinks,
   ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import {useCodePushDescription} from './Utils';
+} from 'react-native/Libraries/NewAppScreen'
+import {useCodePushDescription} from './Utils'
 
 type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+  title: string
+}>
 
 function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = useColorScheme() === 'dark'
   return (
     <View style={styles.sectionContainer}>
       <Text
@@ -45,16 +45,16 @@ function Section({children, title}: SectionProps): JSX.Element {
         {children}
       </Text>
     </View>
-  );
+  )
 }
 
 function App(): JSX.Element {
-  const codePushDescription = useCodePushDescription();
-  const isDarkMode = useColorScheme() === 'dark';
+  const codePushDescription = useCodePushDescription()
+  const isDarkMode = useColorScheme() === 'dark'
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  }
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -96,7 +96,7 @@ function App(): JSX.Element {
         </View>
       </ScrollView>
     </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -116,6 +116,6 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
-});
+})
 
-export default App;
+export default App
