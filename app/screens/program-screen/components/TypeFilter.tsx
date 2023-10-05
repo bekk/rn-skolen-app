@@ -23,9 +23,10 @@ type TypeFilterProps = {
 export function TypeFilter({onSelect, selectedFilter}: TypeFilterProps) {
   return (
     <View style={{flex: 1, flexDirection: 'row', flexWrap: 'wrap'}}>
-      {FILTER_LIST.map(filter => {
+      {FILTER_LIST.map((filter, index) => {
         return (
           <FilterButton
+            key={index}
             filterName={filter}
             onSelect={onSelect}
             selectedFilter={selectedFilter}
