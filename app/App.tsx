@@ -11,6 +11,9 @@ import {SafeAreaProvider} from 'react-native-safe-area-context'
 import {InfoIconFilled} from 'app/icons/InfoIconFilled'
 import {ProgramIconFilled} from 'app/icons/ProgramIconFilled'
 import {ProgramIcon} from 'app/icons/ProgramIcon'
+import {MyProgramScreen} from 'app/screens/my-program-screen/MyProgramScreen'
+import {StarIconFilled} from 'app/icons/StarIconFilled'
+import {StarIcon} from 'app/icons/StarIcon'
 
 const Tab = createBottomTabNavigator()
 
@@ -21,6 +24,7 @@ export function App(): JSX.Element {
         <Tab.Navigator screenOptions={getScreenOptions}>
           <Tab.Screen name="Info" component={InfoScreen} />
           <Tab.Screen name="Program" component={ProgramScreen} />
+          <Tab.Screen name="MyProgram" component={MyProgramScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
@@ -50,5 +54,10 @@ function getRouteIcon(routeName: string, focused: boolean) {
       return <ProgramIconFilled size={30} />
     }
     return <ProgramIcon size={30} />
+  } else if (routeName === 'MyProgram') {
+    if (focused) {
+      return <StarIconFilled size={30} />
+    }
+    return <StarIcon size={30} />
   }
 }
