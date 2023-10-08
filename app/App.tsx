@@ -17,16 +17,6 @@ import {
 } from 'react-native/Libraries/NewAppScreen'
 import {useCodePushDescription} from './Utils'
 
-// App.tsx er hovedkomponenten som inneholder alle komponentene våre.
-// All koden som ligger her nå er generert av initialiseringen av nytt React Native prosjekt.
-
-// Steg 1: Bytt ut all koden som App-komponenten returnerer med et ScrollView.
-// Prøv også å gi ScrollViewet en bakgrunnsfarge og få den til å dekke hele bakgrunnen ved å bruke style-propen.
-
-// https://reactnative.dev/docs/using-a-scrollview
-// https://reactnative.dev/docs/scrollview
-// https://reactnative.dev/docs/style
-
 function App(): JSX.Element {
   const codePushDescription = useCodePushDescription()
   const isDarkMode = useColorScheme() === 'dark'
