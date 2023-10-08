@@ -9,7 +9,6 @@ import {
   useColorScheme,
   View,
 } from 'react-native'
-
 import {
   Colors,
   DebugInstructions,
@@ -18,35 +17,15 @@ import {
 } from 'react-native/Libraries/NewAppScreen'
 import {useCodePushDescription} from './Utils'
 
-type SectionProps = PropsWithChildren<{
-  title: string
-}>
+// App.tsx er hovedkomponenten som inneholder alle komponentene våre.
+// All koden som ligger her nå er generert av initialiseringen av nytt React Native prosjekt.
 
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark'
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  )
-}
+// Steg 1: Bytt ut all koden som App-komponenten returnerer med et ScrollView.
+// Prøv også å gi ScrollViewet en bakgrunnsfarge og få den til å dekke hele bakgrunnen ved å bruke style-propen.
+
+// https://reactnative.dev/docs/using-a-scrollview
+// https://reactnative.dev/docs/scrollview
+// https://reactnative.dev/docs/style
 
 function App(): JSX.Element {
   const codePushDescription = useCodePushDescription()
@@ -117,5 +96,35 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 })
+
+type SectionProps = PropsWithChildren<{
+  title: string
+}>
+
+function Section({children, title}: SectionProps): JSX.Element {
+  const isDarkMode = useColorScheme() === 'dark'
+  return (
+    <View style={styles.sectionContainer}>
+      <Text
+        style={[
+          styles.sectionTitle,
+          {
+            color: isDarkMode ? Colors.white : Colors.black,
+          },
+        ]}>
+        {title}
+      </Text>
+      <Text
+        style={[
+          styles.sectionDescription,
+          {
+            color: isDarkMode ? Colors.light : Colors.dark,
+          },
+        ]}>
+        {children}
+      </Text>
+    </View>
+  )
+}
 
 export default App
