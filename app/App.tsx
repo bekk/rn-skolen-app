@@ -14,20 +14,23 @@ import {ProgramIcon} from 'app/icons/ProgramIcon'
 import {MyProgramScreen} from 'app/screens/my-program-screen/MyProgramScreen'
 import {StarIconFilled} from 'app/icons/StarIconFilled'
 import {StarIcon} from 'app/icons/StarIcon'
+import {RecoilRoot} from 'recoil'
 
 const Tab = createBottomTabNavigator()
 
 export function App(): JSX.Element {
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Tab.Navigator screenOptions={getScreenOptions}>
-          <Tab.Screen name="Info" component={InfoScreen} />
-          <Tab.Screen name="Program" component={ProgramScreen} />
-          <Tab.Screen name="MyProgram" component={MyProgramScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <RecoilRoot>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Tab.Navigator screenOptions={getScreenOptions}>
+            <Tab.Screen name="Info" component={InfoScreen} />
+            <Tab.Screen name="Program" component={ProgramScreen} />
+            <Tab.Screen name="MyProgram" component={MyProgramScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </RecoilRoot>
   )
 }
 

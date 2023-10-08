@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react'
+import React, {useState} from 'react'
 import {ScrollView, View} from 'react-native'
 import {Header} from 'app/components/Header'
 import {
@@ -7,29 +7,19 @@ import {
 } from 'app/screens/program-screen/components/TypeFilter'
 import schedule from 'app/api/schedule'
 import {ScheduleSection} from 'app/screens/program-screen/components/ScheduleSection'
-import {getStoredMyProgramTitles, updateMyPogramTitles} from 'app/async-storage'
-import {useFocusEffect} from '@react-navigation/native'
+import {myProgramTitlesAtom} from 'app/recoil-state/my-program'
+import {useRecoilState} from 'recoil'
 
 export function ProgramScreen() {
   const [selectedFilter, setSelectedFilter] = useState<Filter>('Alle')
-  const [myProgramTitles, setMyProgramTitles] = useState<string[]>([])
+  const [myProgramTitles, setMyProgramTitles] =
+    useRecoilState(myProgramTitlesAtom)
 
   const filteredTalks = schedule.filter(talk =>
     selectedFilter === 'Alle' ? true : talk.type === selectedFilter,
   )
 
-  useFocusEffect(
-    useCallback(() => {
-      async function setMyProgramStateToStoredState() {
-        const storedTitles = await getStoredMyProgramTitles()
-        setMyProgramTitles(storedTitles)
-      }
-      setMyProgramStateToStoredState()
-    }, []),
-  )
-
   function updateMyProgramTitles(currentTitle: string) {
-    updateMyPogramTitles(currentTitle)
     setMyProgramTitles(prev => {
       if (prev.includes(currentTitle)) {
         return prev.filter(title => title !== currentTitle)

@@ -1,27 +1,17 @@
-import React, {useCallback, useState} from 'react'
+import React from 'react'
 import {ScrollView, View} from 'react-native'
 import {Header} from 'app/components/Header'
-import {useFocusEffect} from '@react-navigation/native'
-import {getStoredMyProgramTitles} from 'app/async-storage'
 import schedule from 'app/api/schedule'
 import {TalkSection} from 'app/components/TalkSection'
+import {useRecoilValue} from 'recoil'
+import {myProgramTitlesAtom} from 'app/recoil-state/my-program'
 
 export function MyProgramScreen() {
   const allTalks = schedule
-  const [myProgramTitles, setMyProgramTitles] = useState<string[]>([])
+  const myProgramTitles = useRecoilValue(myProgramTitlesAtom)
 
   const myProgramTalks = allTalks.filter(talk =>
     myProgramTitles.includes(talk.title),
-  )
-
-  useFocusEffect(
-    useCallback(() => {
-      async function setMyProgramStateToStoredState() {
-        const storedTitles = await getStoredMyProgramTitles()
-        setMyProgramTitles(storedTitles)
-      }
-      setMyProgramStateToStoredState()
-    }, []),
   )
 
   return (
