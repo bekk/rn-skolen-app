@@ -1,3 +1,6 @@
+![image](https://github.com/bekk/rn-skolen-app/assets/7909864/a56f3f94-9d7a-4573-9d0e-6ba0d9f48990)
+
+
 # Oppgaver
 
 ## Lage "Info"-skjerm
