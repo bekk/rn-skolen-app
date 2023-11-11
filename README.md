@@ -125,7 +125,7 @@ Vi skal nå legge til Recoil, som vi skal bruke til å holde på en global state
 1. Legg til Recoil som beskrevet her: https://recoiljs.org/docs/introduction/getting-started
 2. Husk å reinstallere appen.
 
-**Steg 2: Legg til et Atom **
+**Steg 2: Legg til et Atom**
 1. Lag app/recoil-state/my-program.ts og legg til et atom som skal holde på titlene for valgte talks.
 2. Se eksempel i https://recoiljs.org/docs/introduction/getting-started
 
