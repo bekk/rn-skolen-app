@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {ScrollView, StyleSheet, Text, View} from 'react-native'
 import txt from 'app/api/infoTexts'
 import {Link} from 'app/screens/info-screen/components/Link'
 import {CodePushDescription} from 'app/components/CodePushDescription'
 import {Heading} from 'app/screens/info-screen/components/Heading'
 import {Header} from 'app/components/Header'
+import {getProgram} from 'app/api/sanity'
 
 export function InfoScreen() {
+  useEffect(() => {
+    getProgram()
+  }, [])
   return (
     <ScrollView
       style={{flex: 1, backgroundColor: 'rgb(30, 30, 30)'}}
