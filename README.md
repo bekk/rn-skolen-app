@@ -145,6 +145,23 @@ Når i bruker Recoil så vil skjermene som henter inn verdiene til atomet oppdat
 1. Nå kan vi slette hele mappa vår som heter async-storage, fordi Recoil og hjelpefunksjonene vi laget tar seg av lagringen.
 
 
+
+## Animasjoner i React Native: ReAnimated og Gesture Handler
+
+Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Løsningsforslaget er branchen "fagdag-med-reanimated".
+
+**Steg 1: ReAnimated: Layout Transitions**
+1. Legg til npm-pakken til ReAnimated som beskrevet her: [https://recoiljs.org/docs/introduction/getting-started](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started). Husk å velge "NPM" og ikke "Expo". Babel-pluginen kan være tricky å plassere riktig, så her kan det være greit å se på løsningsforslaget.
+2. ReAnimated legger til endringer i native-koden så du må huske å kjøre ```npm run pod-install``` og ```npm run ios``` for å reinstallere appen.
+3. Nå kan du prøve å legge på en Layout Transition på ScheduleSection-komponenten. Layout transitions prøver å automatisk lage fine overganger på egenhånd når innholdet i komponenten endrer seg. ReAnimated sin dokumentasjon er ganske bra: https://docs.swmansion.com/react-native-reanimated/docs/layout-animations/layout-transitions/
+
+**Steg 2: ReAnimated: useSharedValue**
+
+**Steg 3: Gesture Handler**
+
+
+
+
 ## Fetche data med React Native: Legg til Sanity
 
 Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Løsningsforslaget er branchen "fagdag-med-sanity".
