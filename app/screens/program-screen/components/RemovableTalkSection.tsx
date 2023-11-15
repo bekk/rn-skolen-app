@@ -1,6 +1,5 @@
 import {Talk} from 'app/api/schedule'
 import {TalkSection} from 'app/components/TalkSection'
-// import {StarIconFilled} from 'app/icons/AnimatedStarIconFilled'
 import {useMyProgramTitles} from 'app/recoil-state/my-program'
 import React from 'react'
 import {
