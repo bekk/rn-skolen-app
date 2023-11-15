@@ -2,7 +2,7 @@ import {Talk} from 'app/api/schedule'
 import {Button} from 'app/components/Button'
 import {TalkSection} from 'app/components/TalkSection'
 import {AnimatedStarIconFilled} from 'app/icons/AnimatedStarIconFilled'
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useSharedValue} from 'react-native-reanimated'
 
 type Props = {
@@ -16,20 +16,19 @@ export function SavableTalkSection({
   updateMyProgramTitles,
   myProgramTitles,
 }: Props) {
-  const existsInMyProgram = myProgramTitles.includes(talk.title)
-  const starIconSizeSharedValue = useSharedValue(existsInMyProgram ? 24 : 0)
+  const starIconSizeSharedValue = useSharedValue(0)
 
-  function handlePress() {
-    updateMyProgramTitles(talk.title)
+  useEffect(() => {
+    const existsInMyProgram = myProgramTitles.includes(talk.title)
     if (existsInMyProgram) {
-      starIconSizeSharedValue.value = 0
-    } else {
       starIconSizeSharedValue.value = 24
+    } else {
+      starIconSizeSharedValue.value = 0
     }
-  }
+  }, [myProgramTitles, starIconSizeSharedValue, talk.title])
 
   return (
-    <Button onPress={handlePress}>
+    <Button onPress={() => updateMyProgramTitles(talk.title)}>
       <TalkSection talk={talk} />
       <AnimatedStarIconFilled
         color="rgb(221, 255, 87)"

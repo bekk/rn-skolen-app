@@ -14,7 +14,6 @@ export function useMyProgramTitles() {
     useRecoilState(myProgramTitlesAtom)
 
   function updateMyProgramTitles(currentTitle: string) {
-    console.log(currentTitle)
     setMyProgramTitles(prev => {
       if (prev.includes(currentTitle)) {
         return prev.filter(title => title !== currentTitle)
