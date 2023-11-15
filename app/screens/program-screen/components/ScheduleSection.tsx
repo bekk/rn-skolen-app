@@ -2,7 +2,7 @@ import {Talk} from 'app/api/schedule'
 import {SavableTalkSection} from 'app/screens/program-screen/components/SavableTalkSection'
 import {TimeHeading} from 'app/screens/program-screen/components/TimeHeading'
 import React from 'react'
-import {View} from 'react-native'
+import Animated, {Layout} from 'react-native-reanimated'
 
 type Props = {
   timeSlot: string
@@ -19,7 +19,7 @@ export function ScheduleSection({
 }: Props) {
   const filteredTalks = talks.filter(talk => talk.timeKey === timeSlot)
   return (
-    <View style={{marginTop: 30}}>
+    <Animated.View style={{marginTop: 30}} layout={Layout}>
       <TimeHeading style={{marginBottom: 20}}>{`kl. ${timeSlot}`}</TimeHeading>
       {filteredTalks.map(talk => (
         <SavableTalkSection
@@ -29,6 +29,6 @@ export function ScheduleSection({
           myProgramTitles={myProgramTitles}
         />
       ))}
-    </View>
+    </Animated.View>
   )
 }
