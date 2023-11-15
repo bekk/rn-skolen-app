@@ -144,3 +144,17 @@ Når i bruker Recoil så vil skjermene som henter inn verdiene til atomet oppdat
 **Steg 5: Slett de gamle funksjonene for AsyncStorage**
 1. Nå kan vi slette hele mappa vår som heter async-storage, fordi Recoil og hjelpefunksjonene vi laget tar seg av lagringen.
 
+
+## Fetche data med React Native: Legg til Sanity
+
+Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Løsningsforslaget er branchen "fagdag-med-sanity".
+
+1. For å hente data fra Sanity legger vi til npm-pakken deres: https://www.npmjs.com/package/@sanity/client
+2. Vi ønsker kun å hente data fra Sanity så vi trenger ikke noe api-token. Det holder å initialisere Sanity med verdiene under, og kjøre ```client.fetch``` som beskrevet på npmjs.com.
+
+  projectId: '14t3i8qn',
+  dataset: 'program',
+  useCdn: false,
+  apiVersion: '2022-10-04'
+
+Å fetche data med React Native er relativt rett fram. Her kan du lese mer om det: https://reactnative.dev/docs/network
