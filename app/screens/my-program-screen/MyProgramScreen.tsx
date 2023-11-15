@@ -2,9 +2,10 @@ import React from 'react'
 import {ScrollView, View} from 'react-native'
 import {Header} from 'app/components/Header'
 import schedule from 'app/api/schedule'
-import {TalkSection} from 'app/components/TalkSection'
 import {useRecoilValue} from 'recoil'
 import {myProgramTitlesAtom} from 'app/recoil-state/my-program'
+import Animated, {FadeInRight, FadeOut} from 'react-native-reanimated'
+import {RemovableTalkSection} from 'app/screens/program-screen/components/RemovableTalkSection'
 
 export function MyProgramScreen() {
   const allTalks = schedule
@@ -26,7 +27,12 @@ export function MyProgramScreen() {
           paddingVertical: 20,
         }}>
         {myProgramTalks.map((talk, index) => (
-          <TalkSection key={index} talk={talk} />
+          <Animated.View
+            key={index}
+            entering={FadeInRight.delay(index * 80)}
+            exiting={FadeOut}>
+            <RemovableTalkSection talk={talk} />
+          </Animated.View>
         ))}
       </View>
     </ScrollView>

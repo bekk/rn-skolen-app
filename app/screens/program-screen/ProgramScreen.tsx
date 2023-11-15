@@ -7,26 +7,15 @@ import {
 } from 'app/screens/program-screen/components/TypeFilter'
 import schedule from 'app/api/schedule'
 import {ScheduleSection} from 'app/screens/program-screen/components/ScheduleSection'
-import {myProgramTitlesAtom} from 'app/recoil-state/my-program'
-import {useRecoilState} from 'recoil'
+import {useMyProgramTitles} from 'app/recoil-state/my-program'
 
 export function ProgramScreen() {
   const [selectedFilter, setSelectedFilter] = useState<Filter>('Alle')
-  const [myProgramTitles, setMyProgramTitles] =
-    useRecoilState(myProgramTitlesAtom)
+  const {updateMyProgramTitles, myProgramTitles} = useMyProgramTitles()
 
   const filteredTalks = schedule.filter(talk =>
     selectedFilter === 'Alle' ? true : talk.type === selectedFilter,
   )
-
-  function updateMyProgramTitles(currentTitle: string) {
-    setMyProgramTitles(prev => {
-      if (prev.includes(currentTitle)) {
-        return prev.filter(title => title !== currentTitle)
-      }
-      return [currentTitle, ...prev]
-    })
-  }
 
   return (
     <ScrollView
