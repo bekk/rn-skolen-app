@@ -4,7 +4,7 @@ import {Header} from 'app/components/Header'
 import schedule from 'app/api/schedule'
 import {useRecoilValue} from 'recoil'
 import {myProgramTitlesAtom} from 'app/recoil-state/my-program'
-import Animated, {FadeInRight, FadeOut} from 'react-native-reanimated'
+import Animated, {FadeInRight, Layout} from 'react-native-reanimated'
 import {RemovableTalkSection} from 'app/screens/program-screen/components/RemovableTalkSection'
 
 export function MyProgramScreen() {
@@ -28,9 +28,9 @@ export function MyProgramScreen() {
         }}>
         {myProgramTalks.map((talk, index) => (
           <Animated.View
-            key={index}
-            entering={FadeInRight.delay(index * 80)}
-            exiting={FadeOut}>
+            key={talk.title}
+            layout={Layout}
+            entering={FadeInRight.delay(index * 80)}>
             <RemovableTalkSection talk={talk} />
           </Animated.View>
         ))}

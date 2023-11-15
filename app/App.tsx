@@ -15,6 +15,7 @@ import {MyProgramScreen} from 'app/screens/my-program-screen/MyProgramScreen'
 import {StarIcon} from 'app/icons/StarIcon'
 import {RecoilRoot} from 'recoil'
 import {StarIconFilled} from 'app/icons/StarIconFilled'
+import {GestureHandlerRootView} from 'react-native-gesture-handler'
 
 const Tab = createBottomTabNavigator()
 
@@ -22,13 +23,15 @@ export function App(): JSX.Element {
   return (
     <RecoilRoot>
       <SafeAreaProvider>
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={getScreenOptions}>
-            <Tab.Screen name="Info" component={InfoScreen} />
-            <Tab.Screen name="Program" component={ProgramScreen} />
-            <Tab.Screen name="MyProgram" component={MyProgramScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <GestureHandlerRootView style={{flex: 1}}>
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={getScreenOptions}>
+              <Tab.Screen name="Info" component={InfoScreen} />
+              <Tab.Screen name="Program" component={ProgramScreen} />
+              <Tab.Screen name="MyProgram" component={MyProgramScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </GestureHandlerRootView>
       </SafeAreaProvider>
     </RecoilRoot>
   )
