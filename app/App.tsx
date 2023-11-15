@@ -12,9 +12,9 @@ import {InfoIconFilled} from 'app/icons/InfoIconFilled'
 import {ProgramIconFilled} from 'app/icons/ProgramIconFilled'
 import {ProgramIcon} from 'app/icons/ProgramIcon'
 import {MyProgramScreen} from 'app/screens/my-program-screen/MyProgramScreen'
-import {StarIconFilled} from 'app/icons/StarIconFilled'
 import {StarIcon} from 'app/icons/StarIcon'
 import {RecoilRoot} from 'recoil'
+import {StarIconFilled} from 'app/icons/StarIconFilled'
 
 const Tab = createBottomTabNavigator()
 

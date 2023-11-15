@@ -18,6 +18,10 @@ export function ScheduleSection({
   myProgramTitles,
 }: Props) {
   const filteredTalks = talks.filter(talk => talk.timeKey === timeSlot)
+  if (filteredTalks.length === 0) {
+    return null
+  }
+
   return (
     <Animated.View style={{marginTop: 30}} layout={Layout}>
       <TimeHeading style={{marginBottom: 20}}>{`kl. ${timeSlot}`}</TimeHeading>
