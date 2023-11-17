@@ -156,12 +156,14 @@ Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Lø
 3. Nå kan du prøve å legge på en Layout Transition på ScheduleSection-komponenten. Layout transitions prøver å automatisk lage fine overganger på egenhånd når innholdet i komponenten endrer seg. ReAnimated sin dokumentasjon er ganske bra: https://docs.swmansion.com/react-native-reanimated/docs/layout-animations/layout-transitions/
 
 **Steg 2: ReAnimated: useSharedValue**
-1. Dokumentasjonen til ReAnimated er veldig god, så her ville jeg startet med å se igjennom [Your first animation](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/your-first-animation/) og [Animating styles and props]([https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/your-first-animation/](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/animating-styles-and-props)))
+1. Dokumentasjonen til ReAnimated er veldig god, så her ville jeg startet med å se igjennom [Your first animation](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/your-first-animation/) og [Animating styles and props]([https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/your-first-animation/](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/animating-styles-and-props))
 2. Deretter kan du for eksempel prøve å animere stjerna som dukker opp når brukeren velger en talk til å bli en favoritt.
 
-**Steg 3: Gesture Handler**
+**Steg 3: Gesture Handler (Avansert!)**
 
+React Native Gesture Handler er et bibliotek som erstatter React Native sitt innebygde touch system. Hvis du har lyst til å prøve deg på dette så ville jeg startet her og prøvd meg litt fram: [Introduction](https://docs.swmansion.com/react-native-gesture-handler/docs/).
 
+I løsningsforslaget har jeg lagt til "swipe til høyre for å slette" på Favoritter-skjermen, så det går an å prøve seg på noe lignende og så kan vi diskutere i møtet hvordan det kan løses.
 
 
 ## Fetche data med React Native: Legg til Sanity
