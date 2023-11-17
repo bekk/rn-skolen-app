@@ -148,7 +148,7 @@ Når i bruker Recoil så vil skjermene som henter inn verdiene til atomet oppdat
 
 ## Animasjoner i React Native: ReAnimated og Gesture Handler
 
-Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Løsningsforslaget er branchen "fagdag-med-reanimated".
+Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Løsningsforslaget er branchen "fagdag-med-reanimated". (OBS: Når man jobber med animasjoner som kjører på native-prosessen, som de som regel gjør med ReAnimated, så kan det være at instruksene som defineres i JSen og blir sendt til native-laget ikke blir oppdatert ved hot-releoading på save. Mistenker man at det skjer så kan det være lurt å reloade appen).
 
 **Steg 1: ReAnimated: Layout Transitions**
 1. Legg til npm-pakken til ReAnimated som beskrevet her: [https://recoiljs.org/docs/introduction/getting-started](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started). Husk å velge "NPM" og ikke "Expo". Babel-pluginen kan være tricky å plassere riktig, så her kan det være greit å se på løsningsforslaget.
@@ -156,6 +156,8 @@ Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Lø
 3. Nå kan du prøve å legge på en Layout Transition på ScheduleSection-komponenten. Layout transitions prøver å automatisk lage fine overganger på egenhånd når innholdet i komponenten endrer seg. ReAnimated sin dokumentasjon er ganske bra: https://docs.swmansion.com/react-native-reanimated/docs/layout-animations/layout-transitions/
 
 **Steg 2: ReAnimated: useSharedValue**
+1. Dokumentasjonen til ReAnimated er veldig god, så her ville jeg startet med å se igjennom [Your first animation](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/your-first-animation/) og [Animating styles and props]([https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/your-first-animation/](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/animating-styles-and-props)))
+2. Deretter kan du for eksempel prøve å animere stjerna som dukker opp når brukeren velger en talk til å bli en favoritt.
 
 **Steg 3: Gesture Handler**
 
