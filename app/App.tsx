@@ -28,7 +28,7 @@ export function App(): JSX.Element {
             <Tab.Navigator screenOptions={getScreenOptions}>
               <Tab.Screen name="Info" component={InfoScreen} />
               <Tab.Screen name="Program" component={ProgramScreen} />
-              <Tab.Screen name="MyProgram" component={MyProgramScreen} />
+              <Tab.Screen name="Mitt program" component={MyProgramScreen} />
             </Tab.Navigator>
           </NavigationContainer>
         </GestureHandlerRootView>
@@ -60,7 +60,7 @@ function getRouteIcon(routeName: string, focused: boolean) {
       return <ProgramIconFilled size={30} />
     }
     return <ProgramIcon size={30} />
-  } else if (routeName === 'MyProgram') {
+  } else if (routeName === 'Mitt program') {
     if (focused) {
       return <StarIconFilled size={30} />
     }
