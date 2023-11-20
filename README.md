@@ -179,3 +179,14 @@ Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Lø
   apiVersion: '2022-10-04'
 
 Å fetche data med React Native er relativt rett fram. Her kan du lese mer om det: https://reactnative.dev/docs/network
+
+## Installere appen på telefonen med kabel
+
+1. Logg inn med Apple-id i Xcode: Xcode (menyen) -> Settings -> Accounts -> Trykk på “pluss”
+2. Trykk på “RNSkolenApp” under TARGETS -> “Signing & capabilities” -> Release -> Skriv inn unik Bundle Identifier -> Huk av for “Automatically manage signing”
+3. Velg “Navnet ditt” som team
+4. Velg den tilkoblede telefonen i statuslinja øverst
+5. Trykk på “Play”-knappen.
+6. Når du får opp beskjeden “Ikke godkjent utvikler” på telefonen: Innstillinger -> Generelt -> VPN og enhetsadministrering -> App fra utvikler -> Godkjenn
+7. Trykk “Play” igjen.
+
