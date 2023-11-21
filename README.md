@@ -180,6 +180,7 @@ Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Lø
 
 Å fetche data med React Native er relativt rett fram. Her kan du lese mer om det: https://reactnative.dev/docs/network
 
+---
 
 ## Installere appen på telefonen med kabel
 
@@ -192,7 +193,7 @@ Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Lø
 7. Trykk “Play” igjen.
 
 
-## Publisere app til App Store
+## Publisere appen til App Store
 
 1. Lag developer konto.
 2. Lag en identifier med samme id som i Xcode: 
