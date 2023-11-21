@@ -180,6 +180,7 @@ Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Lø
 
 Å fetche data med React Native er relativt rett fram. Her kan du lese mer om det: https://reactnative.dev/docs/network
 
+
 ## Installere appen på telefonen med kabel
 
 1. Logg inn med Apple-id i Xcode: Xcode (menyen) -> Settings -> Accounts -> Trykk på “pluss”
@@ -189,4 +190,42 @@ Denne guiden egner seg hvis du starter med branchen "**fagdag-med-recoil**". Lø
 5. Trykk på “Play”-knappen.
 6. Når du får opp beskjeden “Ikke godkjent utvikler” på telefonen: Innstillinger -> Generelt -> VPN og enhetsadministrering -> App fra utvikler -> Godkjenn
 7. Trykk “Play” igjen.
+
+
+## Publisere app til App Store
+
+1. Lag developer konto.
+2. Lag en identifier med samme id som i Xcode: 
+    1. Gå til https://developer.apple.com/account
+    2. Velg “Identifiers”
+    3. Registrer ny AppID
+    4. Bytt ut “Bundle identifier” i Xcode med IDen du valgte.
+3. Lag et “Apple Distribution”-sertifikat. Dette identifiserer deg som utvikler:
+    1. Det er enklest å lage dette fra “Accounts” i Xcode.
+    2. Trykk på “Manage Certificates”
+    3. Trykk på “Pluss” og Apple Distribution
+4. Lag en provisioning profile. Denne brukes når appen skal bygges for å si hvem som har laget appen og hvem den skal distribueres til:
+    1. Gå til https://developer.apple.com/account
+    2. Velg “Profiles”
+    3. Registrer ny Provisioning Profile for App Store med AppIDen du lagde.
+    4. Legg den til i Xcode, enten ved å gå til Accounts og trykk på “Download manual profiles” eller ved å laste den ned og importere den.
+5. Bygge app og last opp til App Store
+    1. Gå til Product -> Archive i menyen
+    2. Du kommer til å bli spurt om passord 2 ganger på rad, for at Xcode skal få tilgang til Keychain på macen. 
+    3. Mens appen bygger så kan du gå til https://developer.apple.com/account og trykk på Apps
+    4. Opprett en app der som Xcode skal laste opp til. (SKU kan feks være det samme som AppIDen din).
+    5. Når bygget er ferdig, trykk på “Distribute App”
+6. Sende inn til review
+    1. Det kan ta 5-10 minutter før bygget du lastet opp blir tilgjengelig for publisering. Du vil få mail når det er klart.
+    2. For å få lov til å sende inn bygget til review og for å få innsendingen godkjent så krever Apple at det fylles ut litt informasjon. Du vil få beskjed om hva som kreves når du prøver å sende inn. Dette er noe av det som trengs:
+        1. Screenshot for telefoner med 5,5 tommer skjerm.
+        2. Description
+        3. Keywords
+        4. Support URL
+        5. Copyright
+        6. Category
+        7. Age Rating
+        8. Content Rights
+        9. App Availability
+        10. Pricing
 
