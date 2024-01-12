@@ -1,5 +1,18 @@
-![image](https://github.com/bekk/rn-skolen-app/assets/7909864/a56f3f94-9d7a-4573-9d0e-6ba0d9f48990)
+# Starte opp appen
 
+1. Sjekk at du står på den branchen du ønsker og sjekk evt diff.
+2. Åpne Simulator (iOS) eller Emulator (Android) og åpne appen du installerte sist.
+3. Kjør **npm start** på rotnivå i repoet. Dette starter Metro som bundler JavaScripten for oss.
+4. Reload JavaScripten i appen med “control, command, z” for iOS eller “command, m” for Android.
+5. Alternativt kan du kjøre **npm run ios** eller **npm run android**. Da installeres både native-delen og JavaScript-delen av appen på nytt.
+
+## Installere appen for første gang eller legge til nye pakker
+
+Det her må også gjøres hvis du bytter mellom brancher i repoet som inneholder ulike pakker.
+
+1. Kjør **npm install** for å installere pakkene i node_modules
+2. Kjør **npm run pod-install** for å installere evt native-kode som pakkene inneholder. Dette trengs bare på iOS.
+3. Kjør **npm run ios** eller **npm run android**.
 
 # Oppgaver
 
