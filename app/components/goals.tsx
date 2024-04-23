@@ -1,17 +1,32 @@
+import {NavigationContainer} from '@react-navigation/native'
+import {NativeStackNavigationProp} from '@react-navigation/native-stack'
+import {RootStackParamList} from 'app/App'
 import React, {useState} from 'react'
-import {StyleSheet, Text, SafeAreaView, View, TextInput} from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  View,
+  TextInput,
+  Button,
+} from 'react-native'
 
 type GoalsProps = {
   workoutsGoal: string
   setWorkoutsGoal: (goal: string) => void
   runGoal: string
   setRunGoal: (goal: string) => void
+  navigation: NativeStackNavigationProp<RootStackParamList>
 }
 
 function Goals(props: GoalsProps): JSX.Element {
   console.log('hellooooooo')
 
-  const {workoutsGoal, setWorkoutsGoal, runGoal, setRunGoal} = props
+  const {workoutsGoal, setWorkoutsGoal, runGoal, setRunGoal, navigation} = props
+
+  const next = () => {
+    navigation.navigate('InfoScreen')
+  }
   return (
     <SafeAreaView style={styles.sectionContainer}>
       <View>
@@ -33,6 +48,7 @@ function Goals(props: GoalsProps): JSX.Element {
             value={workoutsGoal}
             onChangeText={setWorkoutsGoal}></TextInput>
         </View>
+        <Button title="Gå videre" onPress={next} />
       </View>
     </SafeAreaView>
   )

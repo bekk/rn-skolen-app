@@ -238,16 +238,13 @@ const workoutStyles = StyleSheet.create({
   },
 })
 
-function Info(): JSX.Element {
+function InfoScreen(): JSX.Element {
   const [response, setResponse] = useState<Map<
     number,
     WorkoutYearObject
   > | null>()
 
   const [statistics, setStatistics] = useState(false)
-
-  const [workoutsGoal, setWorkoutGoal] = useState('')
-  const [runGoal, setRunGoal] = useState('')
 
   const handleDocumentSelection = async () => {
     const formattedData = await readAndFormatData()
@@ -266,12 +263,6 @@ function Info(): JSX.Element {
       <View>
         <Text style={styles.title}>Stronger</Text>
         <Text>More data from your workouts 💪</Text>
-        <Goals
-          workoutsGoal={workoutsGoal}
-          setWorkoutsGoal={setWorkoutGoal}
-          setRunGoal={setRunGoal}
-          runGoal={runGoal}
-        />
       </View>
       {statistics ? (
         <View>
@@ -285,7 +276,7 @@ function Info(): JSX.Element {
   )
 }
 
-export default Info
+export default InfoScreen
 
 const styles = StyleSheet.create({
   container: {
