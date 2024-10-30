@@ -16,7 +16,7 @@ function App(): JSX.Element {
   return (
     <SafeAreaProvider style={styles.sectionContainer}>
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator screenOptions={{headerShown: false}} >
           <Tab.Screen name="GoalsScreen" component={GoalsScreen} />
           <Tab.Screen name="InfoScreen" component={InfoScreen} />
         </Tab.Navigator>

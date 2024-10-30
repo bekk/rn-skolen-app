@@ -1,6 +1,7 @@
+import ExpandableBox from 'app/components/ExpandableBox'
 import Goals from 'app/components/goals'
 import React, {useEffect, useState} from 'react'
-import {View} from 'react-native'
+import {TouchableOpacity, View} from 'react-native'
 import {StyleSheet, SafeAreaView, StatusBar, Button, Text} from 'react-native'
 import DocumentPicker, {
   DocumentPickerResponse,
@@ -183,15 +184,14 @@ type WorkoutYearProp = {
 }
 
 const WorkoutObject = (props: WorkoutYearProp) => {
+
   return (
     <View>
-      <Text>Amount of workouts: {props.workout.amountOfWorkouts}</Text>
+      <Text>Antall økter: {props.workout.amountOfWorkouts}</Text>
       <Text>
-        Weekly average {Math.round(props.workout.weeklyAverage * 100) / 100}{' '}
+        Ukentlig gjennomsnitt: {Math.round(props.workout.weeklyAverage * 100) / 100}{' '}
       </Text>
-      <Text>----</Text>
-      <Text>Total runs of 10km or more: {props.workout.runs?.length || 0}</Text>
-      <Text>Current week: {getWeekNumber()}</Text>
+      <Text>Løpeturer på mer enn 10km: {props.workout.runs?.length || 0}</Text>
     </View>
   )
 }
@@ -208,12 +208,13 @@ function Workouts({workout}: Props): JSX.Element {
     }),
   )
   return (
-    <View>
-      {listOfWorkouts.map(w => {
+    <View style={styles.listOfWorkouts}>
+      {listOfWorkouts.map((w, i) => {
         return (
-          <View style={workoutStyles.container}>
-            <Text style={workoutStyles.yearTitle}>Year : {w.year}</Text>
-            <WorkoutObject workout={w} />
+          <View style={{marginTop:10*i}} key={i}>
+            <ExpandableBox index={i} title={w.year.toString()}>
+                <WorkoutObject workout={w} />
+            </ExpandableBox>
           </View>
         )
       })}
@@ -253,17 +254,17 @@ function InfoScreen(): JSX.Element {
       setStatistics(true)
     }
   }
-  /*useEffect(() => {
-    readAndFormatData()
-  }, [])*/
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.sectionContainer}>
+      <View style={styles.content}>
       <StatusBar barStyle={'dark-content'} />
-      <View>
-        <Text style={styles.title}>Stronger</Text>
-        <Text>More data from your workouts 💪</Text>
-      </View>
+      <View style={styles.description}>
+          <Text style={styles.title}>Stronger</Text>
+          <Text style={styles.text1}>Mer data fra treningen din 💪</Text>
+          <Text style={styles.text1}>Uke {getWeekNumber()}</Text>
+        </View>
+
       {statistics ? (
         <View>
           <Workouts workout={response} />
@@ -272,6 +273,7 @@ function InfoScreen(): JSX.Element {
       ) : (
         <Button title="Upload CSV 📑" onPress={handleDocumentSelection} />
       )}
+      </View>
     </SafeAreaView>
   )
 }
@@ -279,12 +281,32 @@ function InfoScreen(): JSX.Element {
 export default InfoScreen
 
 const styles = StyleSheet.create({
-  container: {
+  sectionContainer: {
+    backgroundColor: '#171717',
     flex: 1,
-    margin: 10,
+  },
+  listOfWorkouts: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  content: {
+    margin: 20,
+    flex: 1
+  },
+  description: {
+    marginBottom:20
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: 'white'
+  },
+  text1: {
+    color: 'white',
+    fontSize: 14
+  },
+  text2: {
+    color: 'white',
+    fontSize: 18
   },
 })
